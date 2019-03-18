@@ -10,7 +10,7 @@ function! s:get_server_name() abort
     else
         throw 'cquery or ccls not found'
     endif
-endif
+endfunction
 
 function! s:request(server, method) abort
     call setqflist([])
@@ -32,7 +32,7 @@ endfunction
 function! cquery#references#derived() abort
     let l:server = s:get_server_name()
 
-    call s:text_document_implementation(l:server, 'textDocument/implementation')
+    call s:request(l:server, 'textDocument/implementation')
 endfunction
 
 function! cquery#references#base() abort
